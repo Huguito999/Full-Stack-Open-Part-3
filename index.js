@@ -1,5 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
+
+
 const cors = require('cors')
 const app = express()
 app.use(cors())
@@ -33,6 +35,8 @@ let phonebook = [
     "number": "39-23-6423122"
   }
 ]
+app.use(express.static('dist'))
+
 app.get('/', (request, response) => {
   response.send('<h1>hello world</h1>')
 })
@@ -92,7 +96,9 @@ app.post('/api/persons', (request, response) => {
   phonebook = phonebook.concat(person);
   response.json(person)
 })
-
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
