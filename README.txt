@@ -7,3 +7,4 @@ The application is deployed at the following link: [Phonebook Backend](https://f
 - `POST /api/persons` - Create a new person.
 - `DELETE /api/persons/:id` - Delete a person by ID.
 - `GET /info` - Get information about the number of people in the phonebook.
+
