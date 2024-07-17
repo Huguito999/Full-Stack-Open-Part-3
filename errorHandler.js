@@ -8,6 +8,7 @@ const errorHandler = (error, request, response, next) => {
     }
 
     response.status(500).json({ error: 'Internal Server Error' });
+    next(error);
 };
 
 module.exports = errorHandler;
