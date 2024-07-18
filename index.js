@@ -4,12 +4,16 @@ const morgan = require("morgan");
 const cors = require("cors");
 const Person = require("./models/person");
 const errorHandler = require("./errorHandler");
+const path = require("path");
 
 app.use(express.static("build"));
 app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(errorHandler);
+
+
+app.use(express.static(path.join(__dirname, "dist")));
 
 app.get("/", (req, res) => {
   res.send("Hello World");
